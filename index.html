@@ -122,6 +122,7 @@
                 // ★ 네이티브 전체화면(canvas만 fullscreen) 대신 CSS 유사 전체화면 사용.
                 //    -> 이렇게 해야 DOM 테스트 버튼이 전체화면에서도 위에 보임.
                 var container = document.querySelector("#unity-container");
+                var footer = document.querySelector("#unity-footer");
                 var pseudoFs = false;
                 function togglePseudoFullscreen() {
                   pseudoFs = !pseudoFs;
@@ -129,20 +130,26 @@
                     container.style.position = "fixed";
                     container.style.left = "0";
                     container.style.top = "0";
+                    container.style.transform = "none";   // ★ CSS의 translate(-50%,-50%) 무력화
                     container.style.width = "100vw";
                     container.style.height = "100vh";
                     container.style.zIndex = "1000";
                     container.style.background = "#000";
+                    if (footer) footer.style.display = "none";   // ★ footer 제거(스크롤 방지)
+                    document.body.style.overflow = "hidden";
                     canvas.style.width = "100vw";
                     canvas.style.height = "100vh";
                   } else {
                     container.style.position = "";
                     container.style.left = "";
                     container.style.top = "";
+                    container.style.transform = "";
                     container.style.width = "";
                     container.style.height = "";
                     container.style.zIndex = "";
                     container.style.background = "";
+                    if (footer) footer.style.display = "";
+                    document.body.style.overflow = "";
                     canvas.style.width = "960px";
                     canvas.style.height = "600px";
                   }

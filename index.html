@@ -116,6 +116,7 @@
         createUnityInstance(canvas, config, (progress) => {
           document.querySelector("#unity-progress-bar-full").style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                window.unityInstance = unityInstance;   // ★ 전역 노출 (테스트 버튼용)
                 document.querySelector("#unity-loading-bar").style.display = "none";
                 document.querySelector("#unity-fullscreen-button").onclick = () => {
                   unityInstance.SetFullscreen(1);
@@ -129,5 +130,33 @@
       document.body.appendChild(script);
 
     </script>
+
+    <!-- ===== [테스트용] 프론트→유니티 SendMessage 버튼 (테스트 후 삭제) ===== -->
+    <div id="test-bridge-panel" style="position:fixed; top:10px; left:10px; z-index:9999; display:flex; flex-direction:column; gap:6px;">
+      <button class="test-scene-btn" data-scene="_ZodiacCard_Collection"
+              style="padding:12px 20px; font-size:15px; cursor:pointer;">
+        별자리 컬렉션 이동
+      </button>
+    </div>
+    <script>
+      (function () {
+        function loadScene(sceneName) {
+          if (!window.unityInstance) {
+            alert("Unity 아직 로딩 중입니다. 잠시 후 다시 눌러주세요.");
+            return;
+          }
+          // 첫 인자 "SceneLoadManager" 는 씬 하이어라키의 GameObject 이름 (클래스명 아님)
+          window.unityInstance.SendMessage("SceneLoadManager", "UnitySceneLoad", sceneName);
+          console.log("[TestBridge] SendMessage -> SceneLoadManager.UnitySceneLoad(" + sceneName + ")");
+        }
+        document.querySelectorAll(".test-scene-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            loadScene(btn.getAttribute("data-scene"));
+          });
+        });
+      })();
+    </script>
+    <!-- ===== [테스트용] 끝 ===== -->
+
   </body>
 </html>

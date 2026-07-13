@@ -118,9 +118,39 @@
               }).then((unityInstance) => {
                 window.unityInstance = unityInstance;   // ★ 전역 노출 (테스트 버튼용)
                 document.querySelector("#unity-loading-bar").style.display = "none";
-                document.querySelector("#unity-fullscreen-button").onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
+
+                // ★ 네이티브 전체화면(canvas만 fullscreen) 대신 CSS 유사 전체화면 사용.
+                //    -> 이렇게 해야 DOM 테스트 버튼이 전체화면에서도 위에 보임.
+                var container = document.querySelector("#unity-container");
+                var pseudoFs = false;
+                function togglePseudoFullscreen() {
+                  pseudoFs = !pseudoFs;
+                  if (pseudoFs) {
+                    container.style.position = "fixed";
+                    container.style.left = "0";
+                    container.style.top = "0";
+                    container.style.width = "100vw";
+                    container.style.height = "100vh";
+                    container.style.zIndex = "1000";
+                    container.style.background = "#000";
+                    canvas.style.width = "100vw";
+                    canvas.style.height = "100vh";
+                  } else {
+                    container.style.position = "";
+                    container.style.left = "";
+                    container.style.top = "";
+                    container.style.width = "";
+                    container.style.height = "";
+                    container.style.zIndex = "";
+                    container.style.background = "";
+                    canvas.style.width = "960px";
+                    canvas.style.height = "600px";
+                  }
+                }
+                document.querySelector("#unity-fullscreen-button").onclick = togglePseudoFullscreen;
+                document.addEventListener("keydown", function (e) {
+                  if (e.key === "Escape" && pseudoFs) togglePseudoFullscreen();
+                });
 
               }).catch((message) => {
                 alert(message);
@@ -132,7 +162,7 @@
     </script>
 
     <!-- ===== [테스트용] 프론트→유니티 SendMessage 버튼 (테스트 후 삭제) ===== -->
-    <div id="test-bridge-panel" style="position:fixed; top:10px; left:10px; z-index:9999; display:flex; flex-direction:column; gap:6px;">
+    <div id="test-bridge-panel" style="position:fixed; top:10px; left:10px; z-index:2147483647; display:flex; flex-direction:column; gap:6px;">
       <button class="test-scene-btn" data-scene="_ZodiacCard_Collection"
               style="padding:12px 20px; font-size:15px; cursor:pointer;">
         별자리 컬렉션 이동

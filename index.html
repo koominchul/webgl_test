@@ -120,48 +120,47 @@
           window.unityInstance = unityInstance;   // ★ 전역 노출 (테스트 버튼용)
           document.querySelector("#unity-loading-bar").style.display = "none";
 
-          // ★ 네이티브 전체화면(canvas만 fullscreen) 대신 CSS 유사 전체화면 사용.
-          //    -> 이렇게 해야 DOM 테스트 버튼이 전체화면에서도 위에 보임.
+          // ★ 브라우저 창을 꽉 채우되, 게임 원본 종횡비(WIDTH:HEIGHT)를 유지한다.
+          //    -> 100vw x 100vh로 늘리면 화면 비율이 다른 기기(전자칠판 등)에서 세로가 넘쳐
+          //       하단 UI가 잘린다. 대신 비율을 지킨 채 화면 안에 '맞춤(letterbox)'하고,
+          //       남는 부분은 테마 배경색 여백으로 둔다. -> 어떤 화면에서도 잘리지 않는다.
           var container = document.querySelector("#unity-container");
           var footer = document.querySelector("#unity-footer");
-          var pseudoFs = false;
-          function togglePseudoFullscreen() {
-            pseudoFs = !pseudoFs;
-            if (pseudoFs) {
-              container.style.position = "fixed";
-              container.style.left = "0";
-              container.style.top = "0";
-              container.style.transform = "none";   // ★ CSS의 translate(-50%,-50%) 무력화
-              container.style.width = "100vw";
-              container.style.height = "100vh";
-              container.style.zIndex = "1000";
-              container.style.background = "#000";
-              if (footer) footer.style.display = "none";   // ★ footer 제거(스크롤 방지)
-              document.body.style.overflow = "hidden";
-              canvas.style.width = "100vw";
-              canvas.style.height = "100vh";
-            } else {
-              container.style.position = "";
-              container.style.left = "";
-              container.style.top = "";
-              container.style.transform = "";
-              container.style.width = "";
-              container.style.height = "";
-              container.style.zIndex = "";
-              container.style.background = "";
-              if (footer) footer.style.display = "";
-              document.body.style.overflow = "";
-              canvas.style.width = "1920px";
-              canvas.style.height = "1200px";
-            }
-          }
-          document.querySelector("#unity-fullscreen-button").onclick = togglePseudoFullscreen;
-          // ※ Escape로 유사 전체화면을 해제하지 않는다.
-          //   (OS 전체화면을 Escape로 나갈 때 창까지 쪼그라드는 것을 방지 — 기본은 항상 꽉 채움 유지)
+          var ASPECT = 1920 / 1200;   // 예) 1920/1200 = 1.6
 
-          // ★ 기본 실행 시 자동으로 유사 전체화면(브라우저 캔버스 영역 꽉 채움) 진입.
-          //    OS 전체화면(requestFullscreen)은 쓰지 않는다 — 주소창까지 사라지는 것을 원치 않음.
-          togglePseudoFullscreen();
+          // 컨테이너는 뷰포트 전체를 덮고, 그 안에서 캔버스를 비율 맞춰 중앙 배치.
+          container.style.position = "fixed";
+          container.style.left = "0";
+          container.style.top = "0";
+          container.style.transform = "none";   // ★ CSS의 translate(-50%,-50%) 무력화
+          container.style.width = "100vw";
+          container.style.height = "100vh";
+          container.style.display = "flex";
+          container.style.alignItems = "center";
+          container.style.justifyContent = "center";
+          container.style.zIndex = "1000";
+          if (footer) footer.style.display = "none";
+          document.body.style.overflow = "hidden";
+
+          // 뷰포트 크기에 맞춰 종횡비를 유지한 최대 크기로 캔버스를 맞춘다.
+          function fitCanvas() {
+            var winW = window.innerWidth;
+            var winH = window.innerHeight;
+            var w, h;
+            if (winW / winH > ASPECT) {
+              // 창이 게임보다 넓음 -> 높이에 맞추고 좌우 여백
+              h = winH;
+              w = Math.round(winH * ASPECT);
+            } else {
+              // 창이 게임보다 좁음/높음 -> 너비에 맞추고 상하 여백
+              w = winW;
+              h = Math.round(winW / ASPECT);
+            }
+            canvas.style.width = w + "px";
+            canvas.style.height = h + "px";
+          }
+          fitCanvas();
+          window.addEventListener("resize", fitCanvas);
 
         }).catch((message) => {
           alert(message);

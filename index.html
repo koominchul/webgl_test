@@ -72,6 +72,22 @@
       // the canvas DOM size and WebGL render target sizes yourself.
       // config.matchWebGLToCanvasSize = false;
 
+      // ── 전자칠판/고해상도 호환: 렌더 해상도(백버퍼) 제한으로 "검은 화면"과 "프레임 저하"를 동시에 방지.
+      //    핵심: FPS는 물리 화면 크기가 아니라 백버퍼 픽셀 수(= CSS크기 x devicePixelRatio)에 비례한다.
+      //    4K 전자칠판에서 화면을 채우면 백버퍼가 데스크톱(1920x1200) 대비 4배 이상 커져 프레임이 떨어지고,
+      //    1920 x DPR 이 GPU의 MAX_TEXTURE_SIZE(4096)를 넘으면 컨텍스트 실패로 검은 화면까지 발생한다.
+      //    -> 화면은 CSS로 꽉 채우되(브라우저가 업스케일, GPU 부하 없음), 실제 렌더 폭만 TARGET_W로 고정한다.
+      //       이렇게 하면 물리 해상도와 무관하게 데스크톱 수준의 프레임이 유지된다. (대가: 약간의 업스케일 blur)
+      config.devicePixelRatio = (function () {
+        var TARGET_W = 1920;   // 목표 렌더 가로 해상도. 더 선명하게 원하면 2560 등으로 올릴 것(프레임과 트레이드오프)
+        var MAX_DIM  = 4096;   // GPU MAX_TEXTURE_SIZE 안전 상한(검은 화면 방지)
+        var dpr = window.devicePixelRatio || 1;
+        var cssW = window.innerWidth || TARGET_W;   // 캔버스가 채우는 CSS 가로 폭(모바일 채움 모드 기준)
+        // 백버퍼 가로(cssW x dpr)가 TARGET_W를 넘지 않도록 DPR 상한을 건다.
+        var cap = Math.min(TARGET_W, MAX_DIM) / cssW;
+        return Math.max(0.1, Math.min(dpr, cap));   // 네이티브 DPR 이상으로는 올리지 않음(업스케일만)
+      })();
+
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         // Mobile device style: fill the whole browser client area with the game canvas:
 
@@ -140,9 +156,21 @@
             }
           }
           document.querySelector("#unity-fullscreen-button").onclick = togglePseudoFullscreen;
-          document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape" && pseudoFs) togglePseudoFullscreen();
-          });
+          // ※ Escape로 유사 전체화면을 해제하지 않는다.
+          //   (OS 전체화면을 Escape로 나갈 때 창까지 쪼그라드는 것을 방지 — 기본은 항상 꽉 채움 유지)
+
+          // ★ 기본 실행 시 자동으로 유사 전체화면(브라우저 창 꽉 채움) 진입
+          togglePseudoFullscreen();
+
+          // ★ (선택) 첫 사용자 터치/클릭 때 "진짜 OS 전체화면"으로 승격.
+          //    브라우저는 사용자 제스처가 있어야 requestFullscreen 을 허용한다.
+          function goNativeFullscreenOnce() {
+            var el = document.documentElement;
+            var req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+            if (req) { try { req.call(el); } catch (e) {} }
+            window.removeEventListener("pointerdown", goNativeFullscreenOnce);
+          }
+          window.addEventListener("pointerdown", goNativeFullscreenOnce);
 
         }).catch((message) => {
           alert(message);
@@ -154,7 +182,7 @@
     </script>
 
     <!-- ===== [테스트용] 프론트→유니티 SendMessage 버튼 (배포 전 제거하려면 이 블록 삭제) ===== -->
-    <div id="test-bridge-panel" style="position:fixed; top:10px; left:10px; z-index:2147483647; display:flex; flex-direction:column; gap:6px;">
+    <!-- <div id="test-bridge-panel" style="position:fixed; top:100px; left:10px; z-index:2147483647; display:flex; flex-direction:column; gap:6px;">
       <button class="test-scene-btn" data-scene="_ZodiacCard_Collection"
               style="padding:12px 20px; font-size:15px; cursor:pointer;">
         별자리 컬렉션 이동
@@ -177,7 +205,7 @@
           });
         });
       })();
-    </script>
+    </script> -->
     <!-- ===== [테스트용] 끝 ===== -->
 
   </body>

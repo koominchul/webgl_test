@@ -63,6 +63,10 @@
         productName: "PlayZone_Dev",
         productVersion: "0.1.0",
         showBanner: unityShowBanner,
+        // Application.persistentDataPath(/idbfs/<hash>) 로의 쓰기를 IndexedDB 에
+        // 자동으로 동기화한다. 이 값이 없으면 Unity 가 deprecated 된 수동 동기화
+        // (JS_FileSystem_Sync) 로 동작한다. 캡처 이미지 저장/삭제 유지에 필요.
+        autoSyncPersistentDataPath: true,
       };
 
       // By default, Unity keeps WebGL canvas render target size matched with

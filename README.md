@@ -12,3 +12,7 @@ https://koominchul.github.io/webgl_test/build_tripkoreaWeb
 # 플레이존 단독 프로젝트
 
 https://koominchul.github.io/webgl_test/build_playzoneWeb
+
+# 우주탐험 단독 프로젝트
+
+https://koominchul.github.io/webgl_test/build_universeWeb

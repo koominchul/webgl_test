@@ -8,3 +8,7 @@ https://koominchul.github.io/webgl_test/build_wittiverseWeb
 # 지역여행 단독 프로젝트
 
 https://koominchul.github.io/webgl_test/build_tripkoreaWeb
+
+# 플레이존 단독 프로젝트
+
+https://koominchul.github.io/webgl_test/build_playzoneWeb

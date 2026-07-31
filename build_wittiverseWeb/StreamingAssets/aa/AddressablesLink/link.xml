@@ -6,6 +6,7 @@
     <type fullname="CandyRollView" preserve="all" />
     <type fullname="CandySlime" preserve="all" />
     <type fullname="ComboTextControl" preserve="all" />
+    <type fullname="CommonCaptureResultPopup" preserve="all" />
     <type fullname="CreateNextBackGround" preserve="all" />
     <type fullname="CustomEventListener" preserve="all" />
     <type fullname="DropItemControl" preserve="all" />
@@ -25,7 +26,9 @@
     <type fullname="Luck9kr.Uisystem.MusicGameResultPopup" preserve="all" />
     <type fullname="Luck9kr.Uisystem.MusicGameView" preserve="all" />
     <type fullname="Luck9kr.Uisystem.MusicTitleView" preserve="all" />
+    <type fullname="Luck9kr.Uisystem.PlayZonePopup" preserve="all" />
     <type fullname="Luck9kr.Uisystem.RunGameEndPopup" preserve="all" />
+    <type fullname="Luck9kr.Uisystem.RunGameHelpView" preserve="all" />
     <type fullname="Luck9kr.Uisystem.RunGameView" preserve="all" />
     <type fullname="Luck9kr.Uisystem.TripInKoreaView" preserve="all" />
     <type fullname="Luck9kr.Uisystem.UniverseView" preserve="all" />
@@ -37,6 +40,7 @@
     <type fullname="PlanetDetailWindow" preserve="all" />
     <type fullname="PlayerFollow" preserve="all" />
     <type fullname="PlayerSoundControl" preserve="all" />
+    <type fullname="PlayZoneGameItemCellView" preserve="all" />
     <type fullname="ProjectedMeshShadow" preserve="all" />
     <type fullname="RunGameManager" preserve="all" />
     <type fullname="RunGamePlayerController" preserve="all" />
@@ -50,12 +54,24 @@
     <type fullname="TripDetailMainImageItem" preserve="all" />
     <type fullname="TripDetailPreviewControl" preserve="all" />
     <type fullname="TripDetailPreviewItem" preserve="all" />
+    <type fullname="TripNotebookBridgePopup" preserve="all" />
+    <type fullname="TripNotebookHistoryPopup" preserve="all" />
+    <type fullname="TripNotebookTodayRecordPopup" preserve="all" />
+    <type fullname="TripNoteDeleteConfirmPopup" preserve="all" />
+    <type fullname="TripNoteFullGuidePopup" preserve="all" />
     <type fullname="TripNPCRenderControl" preserve="all" />
+    <type fullname="TripQuizExitPopup" preserve="all" />
+    <type fullname="TripQuizIntroLayer" preserve="all" />
+    <type fullname="TripQuizPlayLayer" preserve="all" />
+    <type fullname="TripQuizPopup" preserve="all" />
+    <type fullname="TripQuizResultLayer" preserve="all" />
     <type fullname="TripSubAreaControl" preserve="all" />
     <type fullname="TripSubAreaItem" preserve="all" />
+    <type fullname="UIDraw.UIDrawable" preserve="all" />
     <type fullname="WityUI.UISDFShape" preserve="all" />
     <type fullname="WV_UIMamager" preserve="all" />
     <type fullname="SuperScrollView.ItemPrefabConfData" preserve="nothing" serialized="true" />
+    <type fullname="Luck9kr.Uisystem.RunGameHelpView/TutorialInfo" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="DG.Tweening.DOTweenAnimation" preserve="all" />
@@ -66,12 +82,17 @@
   <assembly fullname="DOTweenPro, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="DG.Tweening.DOTweenVisualManager" preserve="all" />
   </assembly>
+  <assembly fullname="EnhancedScroller_asmdef, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="EnhancedUI.EnhancedScroller.EnhancedScroller" preserve="all" />
+  </assembly>
   <assembly fullname="Luck9kr.Uisystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Luck9kr.Uisystem.DataHolder" preserve="all" />
     <type fullname="Luck9kr.Uisystem.FullScreenWidget" preserve="all" />
     <type fullname="Luck9kr.Uisystem.ToggleExtend" preserve="all" />
   </assembly>
   <assembly fullname="Nobi.UiRoundedCorners, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Nobi.UiRoundedCorners.ImageWithIndependentRoundedCorners" preserve="all" />
+    <type fullname="Nobi.UiRoundedCorners.ImageWithRoundedCorners" preserve="all" />
   </assembly>
   <assembly fullname="spine-unity, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Spine.Unity.SkeletonAnimation" preserve="all" />

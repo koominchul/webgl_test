@@ -46,13 +46,26 @@
     <type fullname="Workbook5_Level2_View" preserve="all" />
     <type fullname="Workbook5_Level3_Manager" preserve="all" />
     <type fullname="Workbook5_Level3_View" preserve="all" />
-    <type fullname="Workbook6_Level2_Manager" preserve="all" />
-    <type fullname="Workbook6_Level2_View" preserve="all" />
+    <type fullname="WorkBook7_2_KeywordData" preserve="all" />
+    <type fullname="Workbook7_Level1_Manager" preserve="all" />
+    <type fullname="Workbook7_Level1_View" preserve="all" />
+    <type fullname="Workbook7_Level2_Manager" preserve="all" />
+    <type fullname="Workbook7_Level2_View" preserve="all" />
+    <type fullname="Workbook8_FoodItem" preserve="all" />
+    <type fullname="Workbook8_HangeulFoodItem" preserve="all" />
+    <type fullname="Workbook8_Level1_Manager" preserve="all" />
+    <type fullname="Workbook8_Level1_View" preserve="all" />
+    <type fullname="Workbook8_Level2_Manager" preserve="all" />
+    <type fullname="Workbook8_Level2_View" preserve="all" />
+    <type fullname="Workbook8_Level3_Manager" preserve="all" />
+    <type fullname="Workbook8_Level3_View" preserve="all" />
+    <type fullname="Workbook8_Plate" preserve="all" />
     <type fullname="WorkBookARInfoPopup" preserve="all" />
     <type fullname="WorkBookInfoData" preserve="all" />
     <type fullname="WorkBookLobbyManager" preserve="all" />
     <type fullname="WorkBookLobbyView" preserve="all" />
     <type fullname="WorkbookSelectItem" preserve="all" />
+    <type fullname="WorldDragDropController" preserve="all" />
     <type fullname="WV_UIMamager" preserve="all" />
     <type fullname="SuperScrollView.ItemPrefabConfData" preserve="nothing" serialized="true" />
     <type fullname="Workbook_3_1_KeywordData" preserve="nothing" serialized="true" />
@@ -79,7 +92,9 @@
     <type fullname="DG.Tweening.DOTweenVisualManager" preserve="all" />
   </assembly>
   <assembly fullname="Luck9kr.Uisystem, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Luck9kr.Uisystem.CustomButton" preserve="all" />
     <type fullname="Luck9kr.Uisystem.FullScreenWidget" preserve="all" />
+    <type fullname="Luck9kr.Uisystem.ChildTextMeshProColorState" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="MeshBakerCore, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="MB2_TextureBakeResults" preserve="all" />
@@ -247,6 +262,7 @@
   <assembly fullname="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="UnityEngine.BoxCollider" preserve="all" />
     <type fullname="UnityEngine.MeshCollider" preserve="all" />
+    <type fullname="UnityEngine.PhysicsMaterial" preserve="all" />
     <type fullname="UnityEngine.SphereCollider" preserve="all" />
   </assembly>
   <assembly fullname="UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">

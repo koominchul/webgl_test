@@ -60,6 +60,20 @@
     <type fullname="Workbook8_Level3_Manager" preserve="all" />
     <type fullname="Workbook8_Level3_View" preserve="all" />
     <type fullname="Workbook8_Plate" preserve="all" />
+    <type fullname="Workbook9_DanceAnimal" preserve="all" />
+    <type fullname="Workbook9_GraphPanel" preserve="all" />
+    <type fullname="Workbook9_Level1_Manager" preserve="all" />
+    <type fullname="Workbook9_Level1_View" preserve="all" />
+    <type fullname="Workbook9_Level2_Manager" preserve="all" />
+    <type fullname="Workbook9_Level2_View" preserve="all" />
+    <type fullname="Workbook9_Level3_Manager" preserve="all" />
+    <type fullname="Workbook9_Level3_View" preserve="all" />
+    <type fullname="Workbook9_RecycleBin" preserve="all" />
+    <type fullname="Workbook9_RecycleItem" preserve="all" />
+    <type fullname="Workbook9_SnackItem" preserve="all" />
+    <type fullname="Workbook9_SnackPlate" preserve="all" />
+    <type fullname="Workbook9_SwipeCleaner" preserve="all" />
+    <type fullname="Workbook9_TrashItem" preserve="all" />
     <type fullname="WorkBookARInfoPopup" preserve="all" />
     <type fullname="WorkBookInfoData" preserve="all" />
     <type fullname="WorkBookLobbyManager" preserve="all" />
@@ -68,6 +82,7 @@
     <type fullname="WorldDragDropController" preserve="all" />
     <type fullname="WV_UIMamager" preserve="all" />
     <type fullname="SuperScrollView.ItemPrefabConfData" preserve="nothing" serialized="true" />
+    <type fullname="Workbook9_Level2_Manager/NameRound" preserve="nothing" serialized="true" />
     <type fullname="Workbook_3_1_KeywordData" preserve="nothing" serialized="true" />
     <type fullname="Workbook_3_1_SettingData" preserve="nothing" serialized="true" />
   </assembly>
@@ -76,8 +91,8 @@
   </assembly>
   <assembly fullname="CFXRRuntime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="CartoonFX.CFXR_Effect" preserve="all" />
-    <type fullname="CartoonFX.CFXR_Effect/AnimatedLight" preserve="nothing" serialized="true" />
     <type fullname="CartoonFX.CFXR_Effect/CameraShake" preserve="nothing" serialized="true" />
+    <type fullname="CartoonFX.CFXR_Effect/AnimatedLight" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Coffee.UIEffect, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
     <type fullname="Coffee.UIEffects.UIEffect" preserve="all" />

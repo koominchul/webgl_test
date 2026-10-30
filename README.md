@@ -17,8 +17,6 @@ https://koominchul.github.io/webgl_test/build_playzoneWeb
 
 https://koominchul.github.io/webgl_test/build_universeWeb
 
-# 워크북 단독 프로젝트(None AR)
+# 워크북 단독 프로젝트(Mind_AR, Vuforia)
 https://koominchul.github.io/webgl_test/build_sparkonWeb
 
-# 워크북 단독 프로젝트(Mind_AR)
-https://koominchul.github.io/webgl_test/build_sparkonWebAR

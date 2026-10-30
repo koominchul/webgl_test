@@ -6,6 +6,9 @@
     <title>Unity Web Player | SparkOn_AR_Dev</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <!-- MindAR 1.2.5 (이미지 트래킹). ES module 이며 로드되면 window.MINDAR.IMAGE.Controller 를 노출한다.
+         MindARBridge.jslib 가 이 전역을 사용한다. 워커 코드는 controller-*.js 에 내장되어 있어 파일 3개면 된다. -->
+    <script type="module" src="TemplateData/mindar/mindar-image.prod.js"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">

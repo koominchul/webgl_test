@@ -52563,7 +52563,11 @@ const O5 = (n, t) => [
 }, K5 = (n, t, e, s) => {
   const { x: o, y: r, z: i } = X5(n, t, e);
   return { x: o / i, y: r / i };
-}, Z5 = 6, B5 = 1, H5 = 10, _5 = 1, U5 = 0.8, Y5 = 1, Un = 1e3;
+}, Z5 = 6, B5 = 1, H5 = 20, _5 = 1, U5 = 0.8, Y5 = 0, Un = 1e3;
+// [livesketch 수정] MindAR 1.2.5 원본은 H5 = 10(탐색 반경), Y5 = 1(추적 keyframe = 128px 스케일).
+// 선화 도안은 128px keyframe 의 추적점이 4~14개뿐이라(미어캣·원숭이 4개) 4점 이상 일치 조건에 자주 걸려 추적이 끊긴다.
+// 256px keyframe(23~31점)을 쓰고, 같은 움직임 허용 범위를 위해 탐색 반경을 2배로 늘린다.
+// 가짜 카메라 손떨림 테스트(미어캣): 인식 유지 8% / 끊김 12회 -> 100% / 0회 (2026-11-09)
 class Q5 {
   constructor(t, e, s, o, r, i = !1) {
     this.markerDimensions = t, this.trackingDataList = e, this.projectionTransform = s, this.debugMode = i, this.trackingKeyframeList = [];
